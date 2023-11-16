@@ -9,7 +9,7 @@ using namespace std;
 
 //// TODO : cvsToHTML.h + ,cpp
 
-bool readFile(const string &fileName) {
+bool readFile(const string &fileName,  const char deliminator) {
 
     ifstream fileIn(fileName);
 
@@ -33,7 +33,7 @@ bool readFile(const string &fileName) {
 
 
 // Write the Header -> Assume unknown size for row and col
-string writeHeaderHtml(const string &fileName, const char deliminator) {
+string writeHeaderHtml(const string &fileName) {
 
     const string START_TAG = "<";
     const string END_TAG   = "</";
@@ -55,21 +55,36 @@ string writeHeaderHtml(const string &fileName, const char deliminator) {
 
 }
 
+//// reading each line from the CSV file,
+/// splitting it into cells based on the ',' delimiter,
+/// and then writing these cells into an HTML table row (<tr>).
 
 // TODO : Write body -> HTML in the form of a table
 bool writeFile(const string &fileName) {
 
+    ifstream fileIn(fileName);
     ofstream fileOut(fileName);
 
-    string oneLine;
+    //// TODO :  Repeated -> Make a function for it
+    if (!fileIn) {
+        cerr << "Errors during opening the file: " << fileName;
+        return false;
+    }
 
     if (!fileOut) {
         cerr << "Errors during opening the file: " << fileName;
         return false;
     }
 
-    while (getline(cin, oneLine)) {
-        fileOut << oneLine << endl;
+    string oneLine;
+    while (getline(fileIn, oneLine)) {
+        stringstream extractString(oneLine);
+        string cell;
+        // TODO : ADD HTML cell start tags
+       while(getline(extractString,cell, ',')){
+           fileOut << cell << endl;
+       }
+       //  TODO : ADD HTML cell end tags
     }
 
     fileOut.close();
@@ -80,7 +95,6 @@ bool writeFile(const string &fileName) {
 
 
 // Write the footer
-
 string writeFooterHtml(const string &fileName) {
 
     const string END_TAG = "</"; // repeated
@@ -109,7 +123,7 @@ int main() {
     getline(cin, fileNameCsv);
 
     // TODO : Read data from csv. file (diliminator: coma )
-    readFile(fileNameCsv);
+    readFile(fileNameCsv, ',');
 
     //  TODO : Think about how to make it better -> Ask ing the name of .csv : cities.csv => cities.html
     cout << " fichier html  : ";
