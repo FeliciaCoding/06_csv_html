@@ -85,6 +85,9 @@ cmake-build-debug/.ninja_deps
 cmake-build-debug/.ninja_log
 cmake-build-debug/05_Titanic
 cmake-build-debug/build.ninja
+CMakeLists.txt
+
+
 
 
 # Mongo Explorer plugin
