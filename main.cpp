@@ -9,30 +9,7 @@ using namespace std;
 
 //// TODO : cvsToHTML.h + ,cpp
 
-bool readFile(const string &fileName,  const char deliminator) {
-
-    ifstream fileIn(fileName);
-
-    if (!fileIn) {
-        cerr << "Errors during opening the file: " << fileName;
-        return false;
-    }
-
-    while (fileIn) {
-        string oneLine;
-        getline(fileIn, oneLine);
-        stringstream stringStream(oneLine);
-        string       word;
-
-
-        cout << oneLine << endl;
-    }
-
-    fileIn.close();
-}
-
-
-// Write the Header -> Assume unknown size for row and col
+// Assume unknown size for row and col
 string writeHeaderHtml(const string &fileName) {
 
     const string START_TAG = "<";
@@ -60,38 +37,42 @@ string writeHeaderHtml(const string &fileName) {
 /// and then writing these cells into an HTML table row (<tr>).
 
 // TODO : Write body -> HTML in the form of a table
-bool writeFile(const string &fileName) {
+bool writeFile(const string &fileInName, const string &fileOutName, const char &delimiter) {
 
-    ifstream fileIn(fileName);
-    ofstream fileOut(fileName);
+    ifstream fileIn(fileInName);
+    ofstream fileOut(fileOutName);
 
-    //// TODO :  Repeated -> Make a function for it
+    //// TODO :  Repeated -> Make a function for it ?
     if (!fileIn) {
-        cerr << "Errors during opening the file: " << fileName;
+        cerr << "Errors during opening the file: " << fileInName;
         return false;
     }
 
     if (!fileOut) {
-        cerr << "Errors during opening the file: " << fileName;
+        cerr << "Errors during opening the file: " << fileOutName;
         return false;
     }
 
+    writeHeaderHtml(fileOutName);
+
+    // TODO : Read the first line, split with delimiter, adding HTML table header tags
+
+    // TODO : create writeCell function
     string oneLine;
     while (getline(fileIn, oneLine)) {
         stringstream extractString(oneLine);
-        string cell;
+        string       cell;
         // TODO : ADD HTML cell start tags
-       while(getline(extractString,cell, ',')){
-           fileOut << cell << endl;
-       }
-       //  TODO : ADD HTML cell end tags
+        while (getline(extractString, cell, delimiter)) {
+            fileOut << cell << endl;
+        }
+        //  TODO : ADD HTML cell end tags
     }
 
+    fileIn.close();
     fileOut.close();
     return true;
 }
-
-
 
 
 // Write the footer
@@ -122,13 +103,11 @@ int main() {
     string fileNameCsv;
     getline(cin, fileNameCsv);
 
-    // TODO : Read data from csv. file (diliminator: coma )
-    readFile(fileNameCsv, ',');
-
     //  TODO : Think about how to make it better -> Ask ing the name of .csv : cities.csv => cities.html
     cout << " fichier html  : ";
     string fileNameHtml;
     getline(cin, fileNameHtml);
+
 
     ifstream fileIn(fileNameHtml);
 
@@ -136,15 +115,6 @@ int main() {
         cerr << "Errors during opening the file : " << fileNameHtml;
         return EXIT_FAILURE;
     }
-
-
-    auto backup = cin.rdbuf();
-    cin.rdbuf(fileIn.rdbuf());
-
-    //// TODO :  write HTML file -> translator from .cvs to html
-
-    cin.rdbuf(backup);
-    fileIn.clear();
 
 
     return EXIT_SUCCESS;
