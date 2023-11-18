@@ -1,9 +1,12 @@
 #include <iostream>
 #include <string>
 #include <cstdlib> //EXIT_SUCCESS
+#include <cctype>
+#include <limits>
 
 #include "fileOperation.h"
 #include "csvToHtml.h"
+#include "userInput.h"
 
 using namespace std;
 
@@ -11,21 +14,32 @@ using namespace std;
 int main() {
 
     const char delimiter = ',';
-
-    // TODO : restart program
-    string fileInName = askFileName("CSV file  : ");
-    string fileOutName = askFileName("HTML file : ");
+    const char positiveChoice= 'Y';
+    const char negativeChoice= 'N';
 
     ifstream fileIn;
     ofstream fileOut;
 
-    openFiles(fileInName, fileOutName, fileIn, fileOut);
+    char restartChoice;
+    do {
 
-    csvToHtml(fileInName, fileOutName, delimiter);
+        string fileInName  = askFileName("CSV file  : ");
+        string fileOutName = askFileName("HTML file : ");
 
-    cout << " End of program. " << endl;
+        openFiles(fileInName, fileOutName, fileIn, fileOut);
 
-    closeFiles(fileIn, fileOut);
+        csvToHtml(fileInName, fileOutName, delimiter);
+
+        closeFiles(fileIn, fileOut);
+
+        restartChoice = getUserChoice("Would you like to restart to program [Y/N] ?: ", positiveChoice, negativeChoice);
+
+        if (restartChoice == negativeChoice){
+            cout << "End of program." << endl;
+        }
+
+    }while(restartChoice == positiveChoice);
+
 
     return EXIT_SUCCESS;
 }

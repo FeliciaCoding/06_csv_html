@@ -2,13 +2,6 @@
 #include <iostream>
 #include "fileOperation.h"
 
-std::string askFileName(const std::string &message) {
-
-    std::cout << message;
-    std::string fileName;
-    getline(std::cin, fileName);
-    return fileName;
-}
 
 bool openFiles(const std::string &fileInName, const std::string &fileOutName, std::ifstream &fileIn,
                std::ofstream &fileOut) {

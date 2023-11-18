@@ -64,7 +64,7 @@ void csvToHtml(const string &fileInName, const string &fileOutName, const char &
     fileOut << START_TAG << BODY
             << "<table border =" << BORDER_NUM << ">\n";
 
-    //  TODO : function for columnHeader
+    // TODO : A fonction for columnHeader / TABLE_DATA
     //  TODO : left
     const string TABLE_ROW    = "tr>\n";
     const string TABLE_HEADER = "th>";
@@ -82,14 +82,14 @@ void csvToHtml(const string &fileInName, const string &fileOutName, const char &
             fileOut << "\t" << START_TAG << TABLE_HEADER
                     << columnHeader
                     << END_TAG << TABLE_HEADER << endl;
+
         }
         fileOut << END_TAG << TABLE_ROW;
+        break;
     }
 
 
 
-    //  TODO : function for TABLE_DATA
-    //  TODO : left
     const string TABLE_DATA = "td>\n";
 
     string oneLine;
