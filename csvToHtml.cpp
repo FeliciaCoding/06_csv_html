@@ -6,14 +6,13 @@
 
 using namespace std;
 
-const string START_TAG  = "<"; // Repeated
-const string END_TAG    = "</"; // Repeated
-const string HTML       = "html>\n"; // Repeated
-const string BORDER_NUM = "1"; // Repeated
+const string START_TAG  = "<";
+const string END_TAG    = "</";
+const string HTML       = "html>\n";
+const string BORDER_NUM = "1";
 
 
-
-// Assume unknown size for row and col
+// Assume unknown size for row and columns
 void writeHeaderHtml(const string &fileInName, const string &fileOutName) {
 
     const string HEAD      = "head>\n";
@@ -39,14 +38,11 @@ void writeHeaderHtml(const string &fileInName, const string &fileOutName) {
 
 void writeFooterHtml(const string &fileInName, const string &fileOutName) {
 
-    ifstream fileIn(fileInName);
-    ofstream fileOut(fileOutName, ios::app);
-
-    //const string END_TAG = "</"; // repeated
     const string TABLE = "table>\n";
     const string BODY  = "body>\n";
-    //const string HTML    = "html>\n"; // repeated
 
+    ifstream fileIn(fileInName);
+    ofstream fileOut(fileOutName, ios::app);
 
     fileOut << END_TAG << TABLE
             << END_TAG << BODY
@@ -63,15 +59,12 @@ void csvToHtml(const string &fileInName, const string &fileOutName, const char &
 
     writeHeaderHtml(fileInName, fileOutName);
 
-    //const string START_TAG  = "<"; // REPEATED
-    //const string END_TAG    = "</";// REPEATED
     const string BODY = "body>\n";
-    //const string BORDER_NUM = "1"; // REPEATED
 
     fileOut << START_TAG << BODY
             << "<table border =" << BORDER_NUM << ">\n";
 
-    //  columnHeader
+    //  TODO : function for columnHeader
     const string TABLE_ROW    = "tr>\n";
     const string TABLE_HEADER = "th>";
 
@@ -94,7 +87,7 @@ void csvToHtml(const string &fileInName, const string &fileOutName, const char &
 
 
 
-    // Table data
+    //  TODO : function for TABLE_DATA
     const string TABLE_DATA = "td>\n";
 
     string oneLine;

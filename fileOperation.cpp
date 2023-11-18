@@ -1,14 +1,10 @@
 #include <string>
-#include <fstream>
 #include <iostream>
 #include "fileOperation.h"
 
 bool openFiles(const std::string &fileInName, const std::string &fileOutName, std::ifstream &fileIn,
                std::ofstream &fileOut) {
 
-    //// Question : how can i only declare once ??
-    //fileIn(fileInName);
-    //fileOut(fileOutName, std::ios::app);
     fileIn.open(fileInName);
     if (!fileIn.is_open()) { // error (!fileIn)
         std::cerr << "Unable to open '" << fileInName << "'\n";

@@ -5,8 +5,7 @@
 #include "csvToHtml.h"
 
 
-bool
-openFiles(const std::string &fileInName, const std::string &fileOutName, std::ifstream &fileIn, std::ofstream &fileOut);
+bool openFiles(const std::string &fileInName, const std::string &fileOutName, std::ifstream &fileIn, std::ofstream &fileOut);
 
 void closeFiles(std::ifstream &fileIn, std::ofstream &fileOut);
 

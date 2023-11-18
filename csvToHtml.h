@@ -4,15 +4,10 @@
 #include <string>
 #include <fstream>
 
-extern const std::string START_TAG; //  = "<";
-extern const std::string END_TAG; //   = "</";
-extern const std::string HTML; //       = "html>\n";
-extern const std::string BORDER_NUM; // = "1";
-
-
-//extern std::ifstream fileIn(const std::string& fileInName); //// question: const reference?
-//extern std::ofstream fileOut(const std::string& fileOutName); //// question: const reference?
-
+extern const std::string START_TAG;
+extern const std::string END_TAG;
+extern const std::string HTML;
+extern const std::string BORDER_NUM;
 
 void writeHeaderHtml(const std::string &fileInName, const std::string &fileOutName);
 
