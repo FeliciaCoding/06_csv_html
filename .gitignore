@@ -195,4 +195,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+### HTML ###
+*.html
+
+### CSV ###
+*.csv
+
 # End of https://www.toptal.com/developers/gitignore/api/c++,clion+all,macos,windows
