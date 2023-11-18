@@ -7,31 +7,14 @@
 
 using namespace std;
 
-//  TODO : Function?
-void askFilesNames(const string& message) {
-
-    cout << " fichier csv  : ";
-    string fileInName;
-    getline(cin, fileInName);
-
-    cout << " fichier html  : ";
-    string fileOutName;
-    getline(cin, fileOutName);
-
-}
 
 int main() {
 
     const char delimiter = ',';
 
-    // TODO : make a function
-    cout << " fichier csv  : ";
-    string fileInName;
-    getline(cin, fileInName);
-
-    cout << " fichier html  : ";
-    string fileOutName;
-    getline(cin, fileOutName);
+    // TODO : restart program
+    string fileInName = askFileName("CSV file  : ");
+    string fileOutName = askFileName("HTML file : ");
 
     ifstream fileIn;
     ofstream fileOut;
