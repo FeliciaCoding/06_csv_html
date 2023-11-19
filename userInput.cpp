@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cctype> // toupper()
+#include <limits> // numeric_limits<type>
 #include "fileOperation.h"
 #include "userInput.h"
 
@@ -13,7 +15,7 @@ string askFileName(const string &message) {
 }
 
 
-char getUserChoice(const string& message, const char& choice1, const char& choice2){
+char getUserChoice(const string &message, const char &choice1, const char &choice2) {
 
     char userChoice;
     do {
@@ -27,10 +29,11 @@ char getUserChoice(const string& message, const char& choice1, const char& choic
 
         if (cin.fail()) {
             cin.clear();
-        }cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 
-    } while (userChoice != choice1 && userChoice !=  choice2);
+    } while (userChoice != choice1 && userChoice != choice2);
 
     return userChoice;
 

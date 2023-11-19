@@ -9,9 +9,11 @@ extern const std::string END_TAG;
 extern const std::string HTML;
 extern const std::string BORDER_NUM;
 
-void writeHeaderHtml(const std::string &fileInName, const std::string &fileOutName);
+void writeHeaderHtml(std::ofstream &fileOut);
 
-void writeFooterHtml(const std::string &fileInName, const std::string &fileOutName);
+void writeBodyHtml(std::ifstream &fileIn, std::ofstream &fileOut, const char &delimiter);
+
+void writeFooterHtml(std::ostream &fileOut);
 
 void csvToHtml(const std::string &fileInName, const std::string &fileOutName, const char &delimiter);
 

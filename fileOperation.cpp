@@ -7,7 +7,7 @@ bool openFiles(const std::string &fileInName, const std::string &fileOutName, st
                std::ofstream &fileOut) {
 
     fileIn.open(fileInName);
-    if (!fileIn.is_open()) { // error (!fileIn)
+    if (!fileIn.is_open()) {
         std::cerr << "Unable to open '" << fileInName << "'\n";
         return false;
     }
