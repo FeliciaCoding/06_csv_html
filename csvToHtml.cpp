@@ -82,7 +82,7 @@ void writeFooterHtml(ostream &fileOut) {
 }
 
 
-void csvToHtml(const string &fileInName, const string &fileOutName, const char &delimiter) {
+void convertCsvToHtml(const string &fileInName, const string &fileOutName, const char &delimiter) {
 
     ifstream fileIn(fileInName);
     ofstream fileOut(fileOutName, ios::app);

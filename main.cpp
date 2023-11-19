@@ -25,7 +25,7 @@ int main() {
 
         openFiles(fileInName, fileOutName, fileIn, fileOut);
 
-        csvToHtml(fileInName, fileOutName, delimiter);
+        convertCsvToHtml(fileInName, fileOutName, delimiter);
 
         closeFiles(fileIn, fileOut);
 
