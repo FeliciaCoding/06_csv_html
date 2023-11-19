@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cctype> // toupper()
 #include <limits> // numeric_limits<type>
-#include "fileOperation.h"
 #include "userInput.h"
 
 using namespace std;
@@ -19,10 +18,10 @@ char getUserChoice(const string &message, const char &choice1, const char &choic
 
     char userChoice;
     do {
-        cout << "Would you like to restart to program [Y/N] ?: ";
+        cout << message;
         cin >> userChoice;
 
-        // Assume restart program accept both lowercase & uppercase (Case-insensitive)
+        // Assume restart program accepts both lowercase & uppercase (Case-insensitive)
         if (islower(userChoice)) {
             userChoice = (char) toupper(userChoice);
         }

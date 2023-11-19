@@ -29,7 +29,8 @@ int main() {
 
         closeFiles(fileIn, fileOut);
 
-        restartChoice = getUserChoice("Would you like to restart to program [Y/N] ?: ", positiveChoice, negativeChoice);
+        restartChoice = getUserChoice("Would you like to restart the program [Y/N] ?: ", positiveChoice,
+                                      negativeChoice);
 
         if (restartChoice == negativeChoice) {
             cout << "End of program." << endl;

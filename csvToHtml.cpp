@@ -42,29 +42,29 @@ void writeBodyHtml(ifstream &fileIn, ofstream &fileOut, const char &delimiter) {
             << "<table border =" << BORDER_NUM << ">\n";
 
     string oneLine;
-    int    lineNumber = 1;
+    int    lineCounter = 1;
     while (getline(fileIn, oneLine)) {
 
         stringstream stringStream(oneLine);
-        string       currentRowType;
+        string       rowType;
         string       cell;
 
         fileOut << START_TAG << TABLE_ROW;
 
         while (getline(stringStream, cell, delimiter)) {
-            if (lineNumber == 1) {
-                currentRowType = TABLE_HEADER;
+            if (lineCounter == 1) {
+                rowType = TABLE_HEADER;
             } else {
-                currentRowType = TABLE_DATA;
+                rowType = TABLE_DATA;
             }
 
-            fileOut << left << "\t" << START_TAG << currentRowType
+            fileOut << left << "\t" << START_TAG << rowType
                     << cell
-                    << END_TAG << currentRowType << endl;
+                    << END_TAG << rowType << endl;
 
         }
 
-        ++lineNumber;
+        ++lineCounter;
 
     }
 

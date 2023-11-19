@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "fileOperation.h"
+
 
 
 bool openFiles(const std::string &fileInName, const std::string &fileOutName, std::ifstream &fileIn,
@@ -22,7 +24,7 @@ bool openFiles(const std::string &fileInName, const std::string &fileOutName, st
     return true;
 }
 
-void closeFiles(std::ifstream &fileIn, std::ofstream &fileOut) { //// void v.s. bool ?
+void closeFiles(std::ifstream &fileIn, std::ofstream &fileOut) {
     fileIn.close();
     fileOut.close();
 }
