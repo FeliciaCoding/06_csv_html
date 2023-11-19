@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <fstream>
 #include "IOFileConsole.h"
 #include "csvToHtml.h"
 

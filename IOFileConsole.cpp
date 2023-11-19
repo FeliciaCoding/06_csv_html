@@ -7,14 +7,6 @@
 
 using namespace std;
 
-string askFileName(const string &message) {
-
-    cout << message;
-    string fileName;
-    getline(cin, fileName);
-    return fileName;
-}
-
 
 bool openFiles(const string &fileInName, const string &fileOutName, ifstream &fileIn,
                ofstream &fileOut) {
@@ -35,10 +27,27 @@ bool openFiles(const string &fileInName, const string &fileOutName, ifstream &fi
     return true;
 }
 
-
 void closeFiles(ifstream &fileIn, ofstream &fileOut) {
     fileIn.close();
     fileOut.close();
+}
+
+
+void handleInputError(istream &input) {
+    if (input.fail()) {
+        input.clear();
+        input.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+}
+
+
+string askFileName(const string &message) {
+
+    cout << message;
+    string fileName;
+    getline(cin, fileName);
+    handleInputError(cin);
+    return fileName;
 }
 
 
@@ -54,11 +63,7 @@ char getUserChoice(const string &message, const char &choice1, const char &choic
             userChoice = (char) toupper(userChoice);
         }
 
-        if (cin.fail()) {
-            cin.clear();
-        }
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
+        handleInputError(cin);
 
     } while (userChoice != choice1 && userChoice != choice2);
 
