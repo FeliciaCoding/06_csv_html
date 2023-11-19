@@ -3,7 +3,6 @@
 #include <sstream>
 #include "csvToHtml.h"
 
-
 using namespace std;
 
 const string START_TAG    = "<";

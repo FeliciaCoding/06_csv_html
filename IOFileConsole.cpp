@@ -1,7 +1,9 @@
+#include <string>
 #include <iostream>
+#include <fstream>
 #include <cctype> // toupper()
 #include <limits> // numeric_limits<type>
-#include "userInput.h"
+#include "IOFileConsole.h"
 
 using namespace std;
 
@@ -11,6 +13,32 @@ string askFileName(const string &message) {
     string fileName;
     getline(cin, fileName);
     return fileName;
+}
+
+
+bool openFiles(const string &fileInName, const string &fileOutName, ifstream &fileIn,
+               ofstream &fileOut) {
+
+    fileIn.open(fileInName);
+    if (!fileIn.is_open()) {
+        cerr << "Unable to open '" << fileInName << "'\n";
+        return false;
+    }
+
+    fileOut.open(fileOutName);
+    if (!fileOut.is_open()) {
+        cerr << "Unable to open '" << fileOutName << "'\n";
+        fileIn.close();
+        return false;
+    }
+
+    return true;
+}
+
+
+void closeFiles(ifstream &fileIn, ofstream &fileOut) {
+    fileIn.close();
+    fileOut.close();
 }
 
 
