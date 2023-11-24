@@ -1,6 +1,9 @@
 #ifndef INC_06_CSV_HTML_CSVTOHTML_H
 #define INC_06_CSV_HTML_CSVTOHTML_H
 
+// where are the string, stream, headers ?
+
+
 void writeHeaderHtml(std::ofstream &fileOut);
 
 void writeBodyHtml(std::ifstream &fileIn, std::ofstream &fileOut, const char &delimiter);

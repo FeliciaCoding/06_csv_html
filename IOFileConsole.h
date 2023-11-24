@@ -1,5 +1,6 @@
 #ifndef INC_06_CSV_HTML_IOFILECONSOLE_H
 #define INC_06_CSV_HTML_IOFILECONSOLE_H
+// where are the string, stream, headers ?
 
 bool openFiles(const std::string &fileInName, const std::string &fileOutName,
                std::ifstream &fileIn, std::ofstream &fileOut);
