@@ -20,7 +20,7 @@ bool openFiles(const string &fileInName, const string &fileOutName, ifstream &fi
     fileOut.open(fileOutName);
     if (!fileOut.is_open()) {
         cerr << "Unable to open '" << fileOutName << "'\n";
-        fileIn.close();
+        fileIn.close(); // not strictly necessary in c++, but good thought 👍
         return false;
     }
 
@@ -32,7 +32,8 @@ void closeFiles(ifstream &fileIn, ofstream &fileOut) {
     fileOut.close();
 }
 
-
+// good function 👍
+// I like you choice to give a stream in parameter and not automatically use cin
 void handleInputError(istream &input) {
     if (input.fail()) {
         input.clear();
@@ -40,7 +41,7 @@ void handleInputError(istream &input) {
     }
 }
 
-
+// #22 message should be string_view
 string askFileName(const string &message) {
 
     cout << message;

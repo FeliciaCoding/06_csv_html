@@ -35,7 +35,7 @@ void writeHeaderHtml(ofstream &fileOut) {
 
 }
 
-
+// doesn't have to be const char &, just char would be ok in this case
 void writeBodyHtml(ifstream &fileIn, ofstream &fileOut, const char &delimiter) {
 
     fileOut << START_TAG << BODY
@@ -51,6 +51,7 @@ void writeBodyHtml(ifstream &fileIn, ofstream &fileOut, const char &delimiter) {
 
         fileOut << START_TAG << TABLE_ROW;
 
+      // good. could / should be extracted in another function #7
         while (getline(stringStream, cell, delimiter)) {
             if (lineCounter == 1) {
                 rowType = TABLE_HEADER;
@@ -84,6 +85,7 @@ void writeFooterHtml(ostream &fileOut) {
 
 void convertCsvToHtml(const string &fileInName, const string &fileOutName, const char &delimiter) {
 
+    // why are you recreating the streams for the files here ? you already did that, with the verification and everything
     ifstream fileIn(fileInName);
     ofstream fileOut(fileOutName, ios::app);
 
