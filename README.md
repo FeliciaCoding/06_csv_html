@@ -1,5 +1,5 @@
-# 06_csv_html
-## Fichier cvs ➜ html
+# Labo 06 - CSV to HTML
+## Fichier csv ➜ html
 
 ### Objectif
 - fichier texte in/out
